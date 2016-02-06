@@ -11,7 +11,11 @@
 <p>Step 2: Run the script - in ssh "./lazy.sh" and follow dialogs on screen. That's it! :)</p>
 ## OTHER INFO
 ### Release Info
-<ul><li>v0.1: 
+<ul>
+<li>v0.2:
+<ul><li>update to this version brings possibility to use the script in previously deployed and now existent VPN servers</li>
+<li>some conditional forks in the script run has been added: now you can execute the script in order to install OpenVPN server, set it up, add new users</li></ul>
+<li>v0.1: 
 <ul><li>this version can automatically create one user only called "client". If you want to create more users just edit source, replace "client" string and run the script again</li>
 <li>since this version designed to be run on fresh server instance without openvpn installed it could be useful to run "/etc/init.d/openvpn stop && apt-get purge openvpn && rm -rf /etc/openvpn/" to completely uninstall previous openvpn package</li></ul>
 </li></ul>
