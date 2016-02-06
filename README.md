@@ -10,6 +10,8 @@
 <li>Some hint #2: it would be nice idea to add OpenVPN repository to system's repo list - lookup here https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos</li></ul></p>
 <p>Step 2: Run the script - in ssh "./lazy.sh" and follow dialogs on screen. That's it! :)</p>
 ## OTHER INFO
+### Release Info
+<ul><li>v0.1: this version can automatically create one user only called "client". If you want to create more users just edit source, replace "client" string and run the script again.</li></ul>
 ### Licensing
-You gotta be kidding me if you're interested in license issues of the script ;) It's just a tool designed for my purposes so you're free to use it in any kinds. And yeah, you know about "as is" rule and no responsibility of course.
+<p>You gotta be kidding me if you're interested in license issues of the script ;) It's just a tool designed for my purposes so you're free to use it in any kinds. And yeah, you know about "as is" rule and no responsibility of course.</p>
 
