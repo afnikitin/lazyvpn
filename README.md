@@ -11,7 +11,10 @@
 <p>Step 2: Run the script - in ssh "./lazy.sh" and follow dialogs on screen. That's it! :)</p>
 ## OTHER INFO
 ### Release Info
-<ul><li>v0.1: this version can automatically create one user only called "client". If you want to create more users just edit source, replace "client" string and run the script again.</li></ul>
+<ul><li>v0.1: 
+<ul><li>this version can automatically create one user only called "client". If you want to create more users just edit source, replace "client" string and run the script again</li>
+<li>since this version designed to be run on fresh server instance without openvpn installed it could be useful to run "/etc/init.d/openvpn stop && apt-get purge openvpn && rm -rf /etc/openvpn/" to completely uninstall previous openvpn package</li></ul>
+</li></ul>
 ### Licensing
 <p>You gotta be kidding me if you're interested in license issues of the script ;) It's just a tool designed for my purposes so you're free to use it in any kinds. And yeah, you know about "as is" rule and no responsibility of course.</p>
 
