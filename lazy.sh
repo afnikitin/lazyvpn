@@ -2,7 +2,7 @@
 set +x
 
 echo "lazyVPN installer (OpenVPN based) v0.2"
-echo -e "Press any key to continue \c"
+echo -e "Press ENTER to continue \c"
 read GO
 
 ISOPENVPN=`dpkg --get-selections | grep openvpn | grep -v deinstall`
@@ -17,11 +17,11 @@ if [[ $ISOPENVPN = *"openvpn"* && $ISOPENSSL = *"openssl"* && $ISEASYRSA = *"eas
 	then
 		if [ -d "/etc/openvpn/easy-rsa" ]
 			then
-				echo -e "You have all required packages installed, to skip installation step press any key \c"
+				echo -e "You have all required packages installed, to skip installation step press ENTER \c"
 				read GO
 				cp $HOME"/_vars" $HOME"/vars"
 			else
-				echo -e "You have all required packages installed but /etc/openvpn/easy-rsa directory is missed. Press any key to create it \c"
+				echo -e "You have all required packages installed but /etc/openvpn/easy-rsa directory is missed. Press ENTER to create it \c"
 				read GO
 				mkdir $PATHVPN"/easy-rsa/"
 				cp -r /usr/share/easy-rsa/* $PATHVPN"/easy-rsa/"
@@ -31,7 +31,7 @@ if [[ $ISOPENVPN = *"openvpn"* && $ISOPENSSL = *"openssl"* && $ISEASYRSA = *"eas
 		echo "============================="
 		echo "Step 0: package installation"
 		echo "openvpn, openssl, easy-rsa packages are going to be installed"
-		echo -e "Press any key to continue \c"
+		echo -e "Press ENTER to continue \c"
 		read GO
 		set -x
 		apt-get -y install openvpn openssl easy-rsa
@@ -46,7 +46,7 @@ fi
 # ISVARS3=`grep -q Fort-Funston $PATHVPN"/easy-rsa/vars"`
 if grep -q pwd $PATHVPN"/easy-rsa/vars"
 	then
-		echo -e "Looks like you haven't set VARS yet. It's necessary to set variables, press any key to do so \c"
+		echo -e "Looks like you haven't set VARS yet. It's necessary to set variables, press ENTER to do so \c"
 		read GO
 		echo "============================="
 		echo "Step 1: setting up variables"
@@ -92,7 +92,7 @@ if grep -q pwd $PATHVPN"/easy-rsa/vars"
 		cp -f $HOME"/vars" $PATHVPN"/easy-rsa/vars"
 		chmod +x $PATHVPN"/easy-rsa/vars"
 	else
-		echo -e "Looks like you have set VARS. Press any key to continue \c"
+		echo -e "Looks like you have set VARS. Press ENTER to continue \c"
 		read GO
 fi
 
@@ -101,19 +101,19 @@ CONFS=(/etc/openvpn/*.conf)
 CERTS=(/etc/openvpn/*.crt)
 if [[ ! -e "${KEYS[0]}" && ! -e "${CONFS[0]}" && ! -e "${CERTS[0]}" ]]
 	then
-		echo -e "You have no keys, certificates or configuration files in /etc/openvpn directory. Press any key to create them \c"
+		echo -e "You have no keys, certificates or configuration files in /etc/openvpn directory. Press ENTER to create them \c"
 		read GO
 		echo "============================="
 		echo "Step 2: key generating"
 		echo "Keys generating part is starting now"
 		echo "Since you've set up VARS file you need just to press ENTER"
-		echo -e "Press any key to continue \c"
+		echo -e "Press ENTER to continue \c"
 		read GO
 		( cd $PATHVPN"/easy-rsa/" && source vars && touch vars && echo `./clean-all` && echo `./build-ca` && 
 			echo "Server key generating process is starting now" &&
 			echo "Since you've set up VARS file you need just to press ENTER" &&
 			echo "Once you will be asked to sign and save certificates to database press 'Y' key and then ENTER" &&
-			echo -e "Press any key to continue" &&
+			echo -e "Press ENTER to continue" &&
 			read GO &&
 			echo `./build-key-server server` && 
 			echo "Client key generating process is starting now" &&
@@ -280,5 +280,5 @@ echo "VPN server now should be running"
 service --status-all | grep openvpn
 echo "Download client.tar.gz file from /home directory and extract it"
 echo "Move bunch of files into OpenVPN client directory on your PC"
-echo -e "Installation complete! Press any key to exit \c"
+echo -e "Installation complete! Press ENTER to exit \c"
 read GO
